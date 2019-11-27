@@ -1,0 +1,303 @@
+<!doctype html>
+<html >
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manifiesto</title>
+  <link rel="stylesheet" href="estilos.css" />
+<script  src="jquery.js"></script>
+
+</head>
+<body>
+
+<div >
+  <img id="imagenp" src="imagenes/normal.png" />
+ </div>
+<div id="fondo">
+
+  <div id="inicio">
+
+
+    <h1>Bienvenido al manifiesto de la EASD Gran Canaria</h1>
+    
+    <a id="botonM" onclick="cargador('#contenedor','#inicio')">Ir al Manifiesto</a>
+    
+      </div>
+   
+<div id="contenedor">
+<div id="menu">
+    <h1 id="logo">Manifiesto</h1>
+   
+    <div id="opciones">
+    
+    <a id="ma"  onclick="">Manifiesto</a>
+    <a id="ab" onclick="cargador('#text1','#texto')">About</a>
+  </div>
+
+</div>
+<div id="text1">
+<div id="about">
+<h1 id="titA">Sobre nosotros</h1>
+ <p> Desde la Escuela de Arte y Superior de Diseño de Gran Canaria hemos propuesto un manifiesto que responda a las necesidades actuales que como estudiantes hemos visualizado en el entorno educativo y académico.
+</p><p>
+Este manifiesto ha sido desarrollado en base al ya presentado por los embajadores europeos de la creatividad y la innovación durante el año 2009. En base al análisis y debate del mismo en la asignatura de Innovación aplicada al Diseño Gráfico se ha pasado a configurar un documento que cuenta con el apoyo y reflexión de todos los alumnos, y cuya formulación se ha dispuesto con carácter abierto para que cualquier persona o institución pueda hacerlo suyo y adaptarlo en base a sus necesidades.
+</p>
+</div>
+
+<div id="marca">
+<img  src="imagenes/Escuela.png"/>
+<a id="pdf" href="Manifiesto_EASD.pdf" download>Descargar Manifiesto</a>
+</div>
+</div>
+<div id="texto">
+<h1 id="titP">Punto 1</h1>
+
+
+<p id="textP">Fomentar el I+d+i, tener el material actualizado y promover situaciones más realistas.</p>
+
+
+
+</div>
+
+
+
+<div id="botones">
+
+
+    <a id="botonA" onclick="anterior()">&#10094;</a>
+    <a id="botonS" onclick="siguiente()">&#10095;</a>
+</div>
+
+
+</div>
+</div>
+
+ 
+  <script >
+  
+
+
+  $( document ).ready(function() {
+  // Handler for .ready() called.
+
+  $("#inicio").animate({
+        opacity:"1",
+      }, 1500);
+    
+});
+
+
+
+
+   var cont=0;
+   var imagenes =['normal.png','disenar.png','idear.png','interiorizar.png','normal.png','idear.png','disenar.png',]
+   var titulos =['Punto 1','Punto 2','Punto 3','Punto 4', 'Punto 5','Punto 6','Punto 7']   
+   var textos = [
+    'Fomentar el I+d+i, tener el material actualizado y promover situaciones más realistas.',
+    'Actualización obligatoria en formación la profesorado, fomento de la autoformación del alumnado y fomento de la escucha activa profesor-alumno.',
+    'Potenciar la proactividad, fomentar ideas innovadoras a través de la difusión e incentivar a los alumnos en los proyectos sin fomentar la competencia, mencionar logros y dar reconocimiento no solo a la institución, sino a los individuos',
+    'Multidisciplinareidad, compartir conocimiento tanto interno como externo.',
+    'Clases experimentales y promover la creatividad en todas las disciplinas.',
+    'Pensamiento global a grave de proyectos que atiendan la necesidades sociales innovadoras que apoyen diferentes campos culturales a través de las interdisciplinas y enmarcar la escuela como un referente dentro del marco de las ciencias de la comunicación.',
+    'Reutilizar todo el material existente de las diferentes disciplinas y crear una asignatura para la concienciación actual del medio ambiente y temas medioambientales.',
+    ];
+
+
+
+var titulo = $("#titP");
+  var texto = $("#texto");
+  var imagen= $("#imagenp");
+
+
+function siguiente(){
+if(cont==imagenes.length-1){
+  cont=0;
+  cambio("5%","50%");
+
+
+
+}else{
+  if(controlador(cont) ){
+
+cambio("30%","25%");
+
+}else{
+cambio("5%","50%");
+
+}
+cont++;
+}
+}
+
+function anterior(){
+  
+  if(cont==0){
+  cont=imagenes.length-1;
+  cambio("30%","25%");
+
+}else{
+
+  if(!controlador(cont)){
+
+cambio("5%","50%");
+
+}else{
+cambio("30%","25%");
+
+}
+
+cont--;
+}
+
+
+  
+
+
+
+
+}
+
+  
+
+function cambio(img,txt){
+  
+  imagen.animate({
+    left: "17.5%",
+    opacity:"0",
+  }, 200, function() {
+     
+    imagen.attr("src","imagenes/"+imagenes[cont]);
+    
+  texto.animate({
+    left: "37.5%",
+    opacity:"0",
+  }, 100, function() {
+  $("#titP").text(titulos[cont])  
+  $("#textP").text(textos[cont]);;
+ texto.animate({
+      left: txt,
+        opacity:"1",
+      }, 100);
+      
+      });
+      
+      });
+    
+      imagen.animate({
+      left: img,
+        opacity:"1",
+      }, 200);
+
+
+}
+ 
+
+function controlador(num){
+    
+    if(num%2==0){
+      return true;
+
+    }
+    else{
+    return false;}
+
+    
+
+}
+
+
+
+function cargador(div1,div2){
+  
+    if(div1=="#text1"){
+ 
+      $("#imagenp,#botones").animate({
+      opacity:"0",
+    }, 1500);
+
+    $("#imagenp,#botones").css("display","none");
+    $("#ab").attr("onclick", "");
+    $("#ab").css("cursor", "default");
+    $("#ab").css("opacity", "0.5");
+
+    $("#ma").attr("onclick", "cargador('#texto','#text1')");
+    $("#ma").css("cursor", "pointer");
+    $("#ma").css("opacity", "1");
+
+
+
+    }
+
+
+
+$(div1).css("display","block");
+$(div2).animate({
+      opacity:"0",
+    }, 1500);
+    $(div2).css("display","none");
+    $(div1).animate({
+      opacity:"1",
+    }, 1500);
+
+    if(div1=='#contenedor'||div1=="#texto"){
+    $("#imagenp,#botones").animate({
+      opacity:"1",
+    }, 1500);
+    $("#ab").attr("onclick", "cargador('#text1','#texto')");
+    $("#ab").css("cursor", "pointer");
+    $("#ab").css("opacity", "1");
+
+    $("#ma").attr("onclick", "");
+    $("#ma").css("cursor", "default");
+    $("#ma").css("opacity", "0.5");
+
+
+    $("#imagenp,#botones").css("display","block");
+    }
+   
+
+
+}
+
+
+
+
+
+
+
+
+
+
+$("body").keydown(function(e) {
+  if(e.keyCode == 37) { // left
+  anterior();
+  }
+  else if(e.keyCode == 39) { // right
+    siguiente();
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+
+
+</body>
+
+</html>
