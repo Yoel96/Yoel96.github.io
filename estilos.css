@@ -288,19 +288,23 @@ position: absolute;
             width: 30%;
             font-family: "bold";
             
-            font-size: 100%;
+            font-size: 150%;
             color: grey;
             text-align: center;
             margin:15%;
             text-decoration: none;
         }
 
+
+
+
+
         #texto {
   
             position: absolute;
             display: block;
             width: 55%;
-            top: calc(50vh - (/* height */20% / 2));
+            top: calc(50vh - (/* height */24% / 2));
             left:55%;
             text-align: left;
          
