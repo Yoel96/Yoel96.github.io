@@ -13,6 +13,7 @@ body {
     height: 100%;
     margin: 0;
     color: grey;
+    overflow: hidden;
     background-color: #D1E0D7;
 
 }
@@ -99,6 +100,9 @@ font-size: 400%;
     float:right;
     width: 25%;
     display:block;
+    position: absolute;
+    left: 65%;
+    top: -1%;
 
 }
 #ma{
@@ -138,7 +142,7 @@ h1 {
 
 
 #imagenp{
-  
+    overflow: hidden;
     position: absolute;
     display: block;
     width: 60%;
@@ -243,3 +247,126 @@ position: absolute;
 
 
 }
+
+@media only screen and (max-width: 600px) {
+    #inicio h1{
+
+        display: block;
+        margin: auto;
+        font-size: 150%;
+        
+        }
+
+
+        #botonM{
+
+            
+            font-size: 100%;
+            padding:2%;
+            margin: auto;
+            margin-top: 5%;
+            border: 3px solid grey;
+            border-radius: 25px;
+            width:60%;
+        
+        }
+        #titP,#titA{
+            font-size: 100%;
+            margin-bottom: 0.5%;
+            display:block;
+        }
+        
+        #textP{
+            margin-top:1%;
+            width: 70%;
+            display:block;
+            font-size: 70%;
+        
+        
+        }
+        #botones a{
+            width: 30%;
+            font-family: "bold";
+            
+            font-size: 100%;
+            color: grey;
+            text-align: center;
+            margin:15%;
+            text-decoration: none;
+        }
+
+        #texto {
+  
+            position: absolute;
+            display: block;
+            width: 55%;
+            top: calc(50vh - (/* height */20% / 2));
+            left:55%;
+            text-align: left;
+         
+        
+        }
+        
+        #imagenp{
+         
+            position: absolute;
+            display: block;
+            width: 110%;
+            opacity:0;
+            top: calc(50vh - (/* height */50% / 2));
+            left: -25%; 
+            text-align: center;
+         
+        
+        }
+
+        #menu{
+            position: absolute;
+            left: 4%;
+            top: 1.5%;
+            width: 60%;;
+
+        }
+        #logo{
+            margin-right: 10%;
+            font-size: 100%;
+        }
+
+        #opciones{
+        width:50%;
+        position: absolute;
+        top: 3%;
+        display: block;
+        left: 50%;
+        }
+        #opciones a{ font-size: 80%;margin-right: 15%;
+            margin-top: 0;
+            text-align: left;}
+
+
+
+
+
+#about{
+    width: 70%;
+    left: 15%;
+    top: 15%;
+}
+            #about p{
+                text-align: justify;
+                font-size: 80%;
+            }
+  }
+
+  #marca{
+    left: calc(50vw - (/* width */40% / 2)); 
+    width: 40%;
+    top: 72%;
+
+  }
+
+  #pdf{
+    margin-top:10% !important ;
+    font-size: 100%;
+    width: 80%;
+  }

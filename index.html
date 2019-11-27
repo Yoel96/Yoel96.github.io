@@ -12,9 +12,9 @@
 </head>
 <body>
 
-<div >
-  <img id="imagenp" src="imagenes/normal.png" />
- </div>
+
+ 
+ 
 <div id="fondo">
 
   <div id="inicio">
@@ -27,14 +27,16 @@
       </div>
    
 <div id="contenedor">
+    <img id="imagenp" src="imagenes/normal.png" />
 <div id="menu">
     <h1 id="logo">Manifiesto</h1>
    
-    <div id="opciones">
-    
-    <a id="ma"  onclick="">Manifiesto</a>
-    <a id="ab" onclick="cargador('#text1','#texto')">About</a>
-  </div>
+   
+
+</div>
+<div id="opciones">
+  <a id="ab" onclick="cargador('#text1','#texto')">About</a>
+<a id="ma"  onclick="">Manifiesto</a>
 
 </div>
 <div id="text1">
@@ -112,7 +114,14 @@ var titulo = $("#titP");
 
 
 function siguiente(){
-if(cont==imagenes.length-1){
+
+  if ($(window).width()< 960) {
+    
+    siguienteM();
+}
+else {
+
+  if(cont==imagenes.length-1){
   cont=0;
   cambio("5%","50%");
 
@@ -131,8 +140,50 @@ cont++;
 }
 }
 
+
+
+}
+
+
+function siguienteM(){
+
+
+  if(cont==imagenes.length-1){
+  cont=0;
+  cambio("-25%","55%");
+
+
+
+}else{
+  if(controlador(cont) ){
+
+cambio("20%","5%");
+
+}else{
+cambio("-25%","55%");
+
+}
+cont++;
+}
+
+
+
+
+
+
+
+
+
+}
+
+
+
 function anterior(){
-  
+  if ($(window).width()< 960) {
+    
+    anteriorM();
+}
+else {
   if(cont==0){
   cont=imagenes.length-1;
   cambio("30%","25%");
@@ -145,6 +196,7 @@ cambio("5%","50%");
 
 }else{
 cambio("30%","25%");
+}
 
 }
 
@@ -159,7 +211,27 @@ cont--;
 
 }
 
-  
+  function anteriorM(){
+
+
+    if(cont==0){
+  cont=imagenes.length-1;
+  cambio("20%","5%");
+
+}else{
+
+  if(!controlador(cont)){
+
+    cambio("-25%","55%");
+
+}else{
+  cambio("20%","5%");
+}
+
+}
+
+cont--;
+  }
 
 function cambio(img,txt){
   
