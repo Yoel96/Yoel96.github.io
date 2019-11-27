@@ -360,7 +360,6 @@ position: absolute;
                 text-align: justify;
                 font-size: 80%;
             }
-  }
 
   #marca{
     left: calc(50vw - (/* width */40% / 2)); 
@@ -373,4 +372,4 @@ position: absolute;
     margin-top:10% !important ;
     font-size: 100%;
     width: 80%;
-  }
+  }  }
