@@ -95,7 +95,7 @@ Este manifiesto ha sido desarrollado en base al ya presentado por los embajadore
 
    var cont=0;
    //var imagenes =['nor.png','disenar.png','idear.png','interiorizar.png','normal.png','idear.png','interiorizar.png',]
-   var imagenes =['nor.png','disenar-09.png','idear-12.png','interiorizar-10.png','observar-08.png','idear-12.png','interiorizar-10.png',]
+   var imagenes =['nor.png','disenar-09.png','idear-12.png','interiorizar-10.png','observar-08.png','compartir-11.png','interiorizar-10.png',]
    var titulos =['Punto 1','Punto 2','Punto 3','Punto 4', 'Punto 5','Punto 6','Punto 7']   
    var textos = [
     'Fomentar el I+d+i, tener el material actualizado y promover situaciones más realistas.',
@@ -151,17 +151,17 @@ function siguienteM(){
 
   if(cont==imagenes.length-1){
   cont=0;
-  cambio("-25%","55%");
+  cambio("2%","55%");
 
 
 
 }else{
   if(controlador(cont) ){
 
-cambio("20%","8%");
+cambio("45%","8%");
 
 }else{
-cambio("-25%","55%");
+cambio("2%","55%");
 
 }
 cont++;
@@ -217,16 +217,16 @@ cont--;
 
     if(cont==0){
   cont=imagenes.length-1;
-  cambio("20%","8%");
+  cambio("45%","8%");
 
 }else{
 
   if(!controlador(cont)){
 
-    cambio("-25%","55%");
+    cambio("2%","55%");
 
 }else{
-  cambio("20%","8%");
+  cambio("45%","8%");
 }
 
 }
