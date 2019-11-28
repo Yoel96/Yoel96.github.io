@@ -253,7 +253,7 @@ position: absolute;
 
         display: block;
         margin: auto;
-        font-size: 150%;
+        font-size: 170%;
         
         }
 
@@ -373,6 +373,18 @@ position: absolute;
     top: calc(50vh - (/* height */30% / 2));
     left: 5%; 
     text-align: center;
+ 
+
+}
+#inicio{
+  
+    position: absolute;
+    display: block;
+    width: 70%;
+    opacity:0;
+    top: calc(50vh - (/* height */30% / 2));
+    text-align: center !important;
+    left: calc(50vw - (/* width */70% / 2)); 
  
 
 }
