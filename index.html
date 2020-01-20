@@ -14,7 +14,7 @@
 
 </head>
 
-<body id="">
+<body  >
 
 
 
@@ -89,17 +89,26 @@
 
 
   <script>
+
+
+
     $(document).ready(function () {
       // Handler for .ready() called.
+
+
       $("#inicio").animate({
         opacity: "1",
       }, 1500);
+
+  
+
 
     });
 
 
     function inicio() {
       if ($(window).width() < 960) {
+
         if (window.innerHeight > window.innerWidth) {
 
 
@@ -124,6 +133,21 @@
             };
 
           });
+        }
+        else{
+          $('body').fullscreen();
+          window.onorientationchange = function () {
+            $("#alerta").text("Esta página solo funciona en horizontal, por favor rote el telefono");
+            $("#botonM").css("display", "none");
+            $("#rotar").css("display", "block");
+              if (window.innerHeight > window.innerWidth) {
+                cargador("#contenedor", "#inicio");
+              } else {
+                cargador("#inicio", "#contenedor");
+
+              }
+            };
+          cargador("#contenedor", "#inicio");
         }
       }
       else {
@@ -155,13 +179,13 @@
     ];
     var left1 = [10, 30, 40, 50, 40, 60, 70, 80, 60];
     var top1 = [100, 150, 140, 150, 10, 60, 70, 80, 60];
-    var left2 = [10, 30, 40, 50, 40, 60, 70, 80, 60];
+    var left2 = [10, 20, 10, 20, 10, 20, 10, 20, 10];
     var top2 = [100, 150, 140, 150, 10, 60, 70, 80, 60];
 
 
     var titulo = $("#titP");
     var texto = $("#texto");
-    var imagen = $("#imagenp");
+  
 
 
     function siguiente() {
@@ -174,7 +198,7 @@
           cont++;
         }
         $("#imagen,#texto").animate({
-          opacity: "0.2",
+          opacity: "0.5",
         }, 200, function () {
           $("#imagen").css("background-image", "url(imagenes/" + imagenes[cont] + ")");
           $("#titP").text(titulos[cont])
@@ -212,7 +236,7 @@
         cont--;
       }
       $("#imagen,#texto").animate({
-        opacity: "0.2",
+        opacity: "0.5",
       }, 200, function () {
         $("#imagen").css("background-image", "url(imagenes/" + imagenes[cont] + ")");
         $("#titP").text(titulos[cont])
@@ -244,7 +268,7 @@
 
       switch(req) {
       case "top":
-       if ($(window).width() < 960) {
+       if ($(window).width() < 1000) {
         return top2;
       }
       else{
@@ -252,7 +276,8 @@
       }
       break;
       case "left":
-       if ($(window).width() < 960) {
+       if ($(window).width() < 1000) {
+         
         return left2;
       }
       else{
