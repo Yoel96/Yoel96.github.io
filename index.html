@@ -1,5 +1,5 @@
 <!doctype html>
-<html >
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -7,334 +7,349 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Manifiesto</title>
   <link rel="stylesheet" href="estilos.css" />
-<script  src="jquery.js"></script>
+  <script src="jquery.js"></script>
+  <script type="text/javascript" src="jquery.fullscreen.js">
+
+  </script>
 
 </head>
-<body>
+
+<body id="">
 
 
- 
- 
-<div id="fondo">
 
-  <div id="inicio">
+  <div id="imagen"></div>
+  <div id="fondo">
+
+    <div id="inicio">
 
 
-    <h1>Bienvenido al manifiesto de la EASD Gran Canaria</h1>
-    
-    <a id="botonM" onclick="cargador('#contenedor','#inicio')">Ir al Manifiesto</a>
-    
+      <h1 id="alerta">Bienvenido al manifiesto de la EASD Gran Canaria</h1>
+
+      <a id="botonM" onclick="inicio()">Ir al Manifiesto</a>
+
+    </div>
+
+    <div id="contenedor">
+
+      <div id="menu">
+        <h1 id="logo">Manifiesto</h1>
+
+
+
       </div>
-   
-<div id="contenedor">
-    <img id="imagenp" src="imagenes/nor.png" />
-<div id="menu">
-    <h1 id="logo">Manifiesto</h1>
-   
-   
+      <div id="opciones">
+        <a id="ab" onclick="cargador('#text1','#texto')">About</a>
+        <a id="ma" onclick="">Manifiesto</a>
 
-</div>
-<div id="opciones">
-  <a id="ab" onclick="cargador('#text1','#texto')">About</a>
-<a id="ma"  onclick="">Manifiesto</a>
+      </div>
+      <div id="text1">
+        <div id="about">
+          <h1 id="titA">Sobre nosotros</h1>
+          <p> Desde la Escuela de Arte y Superior de Diseño de Gran Canaria hemos propuesto un manifiesto que responda a
+            las necesidades actuales que como estudiantes hemos visualizado en el entorno educativo y académico.
+          </p>
+          <p>
+            Este manifiesto ha sido desarrollado en base al ya presentado por los embajadores europeos de la creatividad
+            y la innovación durante el año 2009. En base al análisis y debate del mismo en la asignatura de Innovación
+            aplicada al Diseño Gráfico se ha pasado a configurar un documento que cuenta con el apoyo y reflexión de
+            todos los alumnos, y cuya formulación se ha dispuesto con carácter abierto para que cualquier persona o
+            institución pueda hacerlo suyo y adaptarlo en base a sus necesidades.
+          </p>
+        </div>
 
-</div>
-<div id="text1">
-<div id="about">
-<h1 id="titA">Sobre nosotros</h1>
- <p> Desde la Escuela de Arte y Superior de Diseño de Gran Canaria hemos propuesto un manifiesto que responda a las necesidades actuales que como estudiantes hemos visualizado en el entorno educativo y académico.
-</p><p>
-Este manifiesto ha sido desarrollado en base al ya presentado por los embajadores europeos de la creatividad y la innovación durante el año 2009. En base al análisis y debate del mismo en la asignatura de Innovación aplicada al Diseño Gráfico se ha pasado a configurar un documento que cuenta con el apoyo y reflexión de todos los alumnos, y cuya formulación se ha dispuesto con carácter abierto para que cualquier persona o institución pueda hacerlo suyo y adaptarlo en base a sus necesidades.
-</p>
-</div>
-
-<div id="marca">
-<img  src="imagenes/Escuela.png"/>
-<a id="pdf" href="Manifiesto_EASD.pdf" download>Descargar Manifiesto</a>
-</div>
-</div>
-<div id="texto">
-<h1 id="titP">Punto 1</h1>
+        <div id="marca">
+          <img src="imagenes/Escuela.png" />
+          <a id="pdf" href="Manifiesto_EASD.pdf" download>Descargar Manifiesto</a>
+        </div>
+      </div>
+      <div id="texto">
+        <h1 id="titP">Punto 1</h1>
 
 
-<p id="textP">Fomentar la Investigación, el desarrollo y la Innovación (I+D+I), promoviendo el aprendizaje basado en proyectos reales que puedan llevarse a cabo con recursos y materiales actualizados. </p>
+        <p id="textP">Fomentar la Investigación, el desarrollo y la Innovación (I+D+I), promoviendo el aprendizaje
+          basado en proyectos reales que puedan llevarse a cabo con recursos y materiales actualizados. </p>
 
 
 
-</div>
+      </div>
 
 
 
-<div id="botones">
+      <div id="botones">
 
 
-    <a id="botonA" onclick="anterior()">&#10094;</a>
-    <a id="botonS" onclick="siguiente()">&#10095;</a>
-</div>
+        <a id="botonA" onclick="anterior()">&#10094;</a>
+        <a id="botonS" onclick="siguiente()">&#10095;</a>
+      </div>
 
 
-</div>
-</div>
-
- 
-  <script >
-  
+    </div>
+  </div>
 
 
-  $( document ).ready(function() {
-  // Handler for .ready() called.
-
-  $("#inicio").animate({
-        opacity:"1",
+  <script>
+    $(document).ready(function () {
+      // Handler for .ready() called.
+      $("#inicio").animate({
+        opacity: "1",
       }, 1500);
-    
-});
+
+    });
+
+
+    function inicio() {
+      if ($(window).width() < 960) {
+        if (window.innerHeight > window.innerWidth) {
+
+
+          $("#inicio").animate({
+            opacity: "0",
+          }, 200, function () {
+            $('body').fullscreen();
+            $("#alerta").text("Esta página solo funciona en horizontal, por favor rote el telefono");
+            $("#botonM").css("opacity", "0");
+          });
+          $("#inicio").animate({
+            opacity: "1",
+          }, 200, function () {
+
+          });
+        }
+      }
+      else {
+
+        cargador("#contenedor", "#inicio");
+      }
+
+    }
+
+    window.onorientationchange = function () {
+      if(window.innerHeight > window.innerWidth){
+        cargador("#contenedor", "#inicio");
+}else{
+  cargador("#inicio", "#contenedor");
+
+}
+    };
 
 
 
 
-   var cont=0;
-   //var imagenes =['nor.png','disenar.png','idear.png','interiorizar.png','normal.png','idear.png','interiorizar.png',]
-   var imagenes =['nor.png','disenar-09.png','idear-12.png','interiorizar-10.png','observar-08.png','compartir-11.png','interiorizar-10.png','interiorizar-10.png','idear-12.png']
-   var titulos =['Punto 1','Punto 2','Punto 3','Punto 4', 'Punto 5','Punto 6','Punto 7','Punto 8', 'Punto 9']   
-   var textos = [
-    'Fomentar la Investigación, el desarrollo y la Innovación (I+D+I), promoviendo el aprendizaje basado en proyectos reales que puedan llevarse a cabo con recursos y materiales actualizados.',
-    'Impulsar la formación continua del profesorado, con el fin de poder ejercer una mejor acción docente. Favorecer la autoformación del alumnado con contenidos que incidan en un alto nivel de especialización.',
-    'Promover la escucha activa, profesor-alumno, como filosofía institucional.',
-    'Potenciar la proactividad, fomentar las ideas innovadoras a través de la difusión trabajos y proyectos destacables, poniendo en valor tanto el trabajo colectivo, como el reconocimiento individual y lo logros del alumnado.',
-    'Incentivar la búsqueda de la excelencia y la competitividad constructiva.',
-    'Posibilitar un mayor flujo de conocimiento multidisciplinar, compartiendo el conocimiento tanto interno y favoreciendo el intercambio de conocimiento externo.',
-    'Promover espacios de trabajo de carácter experimental, y facilitar herramientas para el desarrollo de la creatividad y el pensamiento innovador desde todas las disciplinas.',
-    'Potenciar la puesta en práctica de proyectos que atiendan a necesidades sociales, desde una perspectiva creativa e innovadora, que tenga la capacidad de incidir culturalmente en la sociedad a través del trabajo interdisciplinar. Con el fin de situar a  la Escuela de Arte y Superior de Diseño Gran Canaria como un referente institucional dentro del marco de las ciencias sociales y de la comunicación.',
-    'Favorecer dinámicas que permitan la reutilización de los material existentes en las diferentes disciplinas, y crear una cultura de la sostenibilidad y la concienciación medioambiental.'
+
+    var cont = 0;
+    //var imagenes =['nor.png','disenar.png','idear.png','interiorizar.png','normal.png','idear.png','interiorizar.png',]
+    var imagenes = ['nor.png', 'formacion_continua.png', 'idear-12.png', 'interiorizar-10.png', 'observar-08.png', 'compartir-11.png', 'interiorizar-10.png', 'interiorizar-10.png', 'idear-12.png']
+    var titulos = ['Punto 1', 'Punto 2', 'Punto 3', 'Punto 4', 'Punto 5', 'Punto 6', 'Punto 7', 'Punto 8', 'Punto 9']
+    var textos = [
+      'Fomentar la Investigación, el desarrollo y la Innovación (I+D+I), promoviendo el aprendizaje basado en proyectos reales que puedan llevarse a cabo con recursos y materiales actualizados.',
+      'Impulsar la formación continua del profesorado, con el fin de poder ejercer una mejor acción docente. Favorecer la autoformación del alumnado con contenidos que incidan en un alto nivel de especialización.',
+      'Promover la escucha activa, profesor-alumno, como filosofía institucional.',
+      'Potenciar la proactividad, fomentar las ideas innovadoras a través de la difusión trabajos y proyectos destacables, poniendo en valor tanto el trabajo colectivo, como el reconocimiento individual y lo logros del alumnado.',
+      'Incentivar la búsqueda de la excelencia y la competitividad constructiva.',
+      'Posibilitar un mayor flujo de conocimiento multidisciplinar, compartiendo el conocimiento tanto interno y favoreciendo el intercambio de conocimiento externo.',
+      'Promover espacios de trabajo de carácter experimental, y facilitar herramientas para el desarrollo de la creatividad y el pensamiento innovador desde todas las disciplinas.',
+      'Potenciar la puesta en práctica de proyectos que atiendan a necesidades sociales, desde una perspectiva creativa e innovadora, que tenga la capacidad de incidir culturalmente en la sociedad a través del trabajo interdisciplinar. Con el fin de situar a  la Escuela de Arte y Superior de Diseño Gran Canaria como un referente institucional dentro del marco de las ciencias sociales y de la comunicación.',
+      'Favorecer dinámicas que permitan la reutilización de los material existentes en las diferentes disciplinas, y crear una cultura de la sostenibilidad y la concienciación medioambiental.'
     ];
+    var left = [10, 30, 40, 50, 40, 60, 70, 80, 60];
+    var top = [100, 150, 140, 150, 10, 60, 70, 80, 60];
 
 
-
-var titulo = $("#titP");
-  var texto = $("#texto");
-  var imagen= $("#imagenp");
-
-
-function siguiente(){
-
-  if ($(window).width()< 960) {
-    
-    siguienteM();
-}
-else {
-
-  if(cont==imagenes.length-1){
-  cont=0;
-  cambio("5%","50%");
+    var titulo = $("#titP");
+    var texto = $("#texto");
+    var imagen = $("#imagenp");
 
 
+    function siguiente() {
 
-}else{
-  if(controlador(cont) ){
+      if ($(window).width() < 960) {
+      }
+      else {
+        if (cont == imagenes.length - 1) {
+          cont = 0;
+        }
+        else {
+          cont++;
+        }
+        $("#imagen,#texto").animate({
+          opacity: "0.2",
+        }, 200, function () {
+          $("#imagen").css("background-image", "url(imagenes/" + imagenes[cont] + ")");
+          $("#titP").text(titulos[cont])
+          $("#textP").text(textos[cont]);;
+          //texto.css({"left":left[cont]+"%","top":top[cont]+"%"});
+          texto.offset({ top: top[cont] + "vh" });
+          texto.css({
+            'left': left[cont] + '%'
+          });
+          $("#imagen,#texto").animate({
+            opacity: "1",
+          }, 200, function () {
 
-cambio("40%","25%");
-
-}else{
-cambio("5%","50%");
-
-}
-cont++;
-}
-}
+          });
+        });
 
 
+      }
 
-}
-
-
-function siguienteM(){
-
-
-  if(cont==imagenes.length-1){
-  cont=0;
-  cambio("2%","55%");
-
-
-
-}else{
-  if(controlador(cont) ){
-
-cambio("45%","8%");
-
-}else{
-cambio("2%","55%");
-
-}
-cont++;
-}
+    }
 
 
 
 
+    function siguienteM() {
+
+
+      if (cont == imagenes.length - 1) {
+        cont = 0;
+        cambio("2%", "55%");
+
+
+
+      } else {
+        if (controlador(cont)) {
+
+          cambio("45%", "8%");
+
+        } else {
+          cambio("2%", "55%");
+
+        }
+        cont++;
+      }
 
 
 
 
 
-}
-
-
-
-function anterior(){
-  if ($(window).width()< 960) {
-    
-    anteriorM();
-}
-else {
-  if(cont==0){
-  cont=imagenes.length;
-  cambio("40%","25%");
-
-}else{
-
-  if(!controlador(cont)){
-
-cambio("5%","50%");
-
-}else{
-cambio("40%","25%");
-}
-
-}
-
-cont--;
-}
-
-
-  
 
 
 
 
-}
-
-  function anteriorM(){
+    }
 
 
-    if(cont==0){
-  cont=imagenes.length;
-  cambio("45%","8%");
 
-}else{
+    function anterior() {
+      /*if ($(window).width() < 960) {
 
-  if(!controlador(cont)){
+        anteriorM();
+      }
+      else {*/
+      if (cont == 0) {
+        cont = imagenes.length - 1;
+      }
+      else {
+        cont--;
+      }
+      $("#imagen,#texto").animate({
+        opacity: "0.2",
+      }, 200, function () {
+        $("#imagen").css("background-image", "url(imagenes/" + imagenes[cont] + ")");
+        $("#titP").text(titulos[cont])
+        $("#textP").text(textos[cont]);;
+        //texto.css({"left":left[cont]+"%","top":top[cont]+"%"});
+        texto.offset({ top: top[cont] + "vh" });
+        texto.css({
+          'left': left[cont] + '%'
+        });
+        $("#imagen,#texto").animate({
+          opacity: "1",
+        }, 200, function () {
 
-    cambio("2%","55%");
-
-}else{
-  cambio("45%","8%");
-}
-
-}
-
-cont--;
-  }
-
-function cambio(img,txt){
-  
-  imagen.animate({
-    left: "17.5%",
-    opacity:"0",
-  }, 200, function() {
-     
-    imagen.attr("src","imagenes/"+imagenes[cont]);
-    
-  texto.animate({
-    left: "37.5%",
-    opacity:"0",
-  }, 100, function() {
-  $("#titP").text(titulos[cont])  
-  $("#textP").text(textos[cont]);;
- texto.animate({
-      left: txt,
-        opacity:"1",
-      }, 100);
-      
+        });
       });
-      
-      });
-    
-      imagen.animate({
-      left: img,
-        opacity:"1",
-      }, 200);
-
-
-}
- 
-
-function controlador(num){
-    
-    if(num%2==0){
-      return true;
 
     }
-    else{
-    return false;}
-
-    
-
-}
+    //}
 
 
 
-function cargador(div1,div2){
-  
-    if(div1=="#text1"){
- 
-      $("#imagenp,#botones").animate({
-      opacity:"0",
-    }, 1500);
-
-    $("#imagenp,#botones").css("display","none");
-    $("#ab").attr("onclick", "");
-    $("#ab").css("cursor", "default");
-    $("#ab").css("opacity", "0.5");
-
-    $("#ma").attr("onclick", "cargador('#texto','#text1')");
-    $("#ma").css("cursor", "pointer");
-    $("#ma").css("opacity", "1");
 
 
 
+
+
+
+    function anteriorM() {
+
+
+      if (cont == 0) {
+        cont = imagenes.length;
+        cambio("45%", "8%");
+
+      } else {
+
+        if (!controlador(cont)) {
+
+          cambio("2%", "55%");
+
+        } else {
+          cambio("45%", "8%");
+        }
+
+      }
+
+      cont--;
     }
 
 
 
-$(div1).css("display","block");
-$(div2).animate({
-      opacity:"0",
-    }, 1500);
-    $(div2).css("display","none");
-    $(div1).animate({
-      opacity:"1",
-    }, 1500);
-
-    if(div1=='#contenedor'||div1=="#texto"){
-    $("#imagenp,#botones").animate({
-      opacity:"1",
-    }, 1500);
-    $("#ab").attr("onclick", "cargador('#text1','#texto')");
-    $("#ab").css("cursor", "pointer");
-    $("#ab").css("opacity", "1");
-
-    $("#ma").attr("onclick", "");
-    $("#ma").css("cursor", "default");
-    $("#ma").css("opacity", "0.5");
 
 
-    $("#imagenp,#botones").css("display","block");
+
+    function cargador(div1, div2) {
+
+      if (div1 == "#text1") {
+
+        $("#imagenp,#botones").animate({
+          opacity: "0",
+        }, 1500);
+
+        $("#imagenp,#botones").css("display", "none");
+        $("#ab").attr("onclick", "");
+        $("#ab").css("cursor", "default");
+        $("#ab").css("opacity", "0.5");
+
+        $("#ma").attr("onclick", "cargador('#texto','#text1')");
+        $("#ma").css("cursor", "pointer");
+        $("#ma").css("opacity", "1");
+
+
+
+      }
+
+
+
+      $(div1).css("display", "block");
+      $(div2).animate({
+        opacity: "0",
+      }, 1500);
+      $(div2).css("display", "none");
+      $(div1).animate({
+        opacity: "1",
+      }, 1500);
+
+      if (div1 == '#contenedor' || div1 == "#texto") {
+        $("#imagenp,#botones").animate({
+          opacity: "1",
+        }, 1500);
+        $("#ab").attr("onclick", "cargador('#text1','#texto')");
+        $("#ab").css("cursor", "pointer");
+        $("#ab").css("opacity", "1");
+
+        $("#ma").attr("onclick", "");
+        $("#ma").css("cursor", "default");
+        $("#ma").css("opacity", "0.5");
+
+
+        $("#imagenp,#botones").css("display", "block");
+      }
+
+
+
     }
-   
-
-
-}
 
 
 
@@ -345,14 +360,14 @@ $(div2).animate({
 
 
 
-$("body").keydown(function(e) {
-  if(e.keyCode == 37) { // left
-  anterior();
-  }
-  else if(e.keyCode == 39) { // right
-    siguiente();
-  }
-});
+    $("body").keydown(function (e) {
+      if (e.keyCode == 37) { // left
+        anterior();
+      }
+      else if (e.keyCode == 39) { // right
+        siguiente();
+      }
+    });
 
 
 

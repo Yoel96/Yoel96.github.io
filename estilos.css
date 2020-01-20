@@ -253,32 +253,13 @@ position: absolute;
 @media only screen and (max-width: 600px) {
 
 
-    #container { display:block; }
-
-@media only screen and (orientation:portrait){
-
-  #container {
-
-    width: 100vw;
-
-    -webkit-transform: rotate(90deg);
-
-    -moz-transform: rotate(90deg);
-
-    -o-transform: rotate(90deg);
-
-    -ms-transform: rotate(90deg);
-
-    transform: rotate(90deg);
-
-  }
-
-}
+    body { display:block; }
 
 @media only screen and (orientation:landscape){
 
-  #container {
+  body {
 
+    height: 100vw;
      -webkit-transform: rotate(0deg);
 
      -moz-transform: rotate(0deg);
