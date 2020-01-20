@@ -14,7 +14,7 @@ body {
     margin: 0;
     color: white;
     overflow: hidden;
-    background-color: #D1E0D7;
+
 
 }
 body a{
@@ -22,7 +22,7 @@ body a{
 
     cursor: pointer;
 }
-#imagen{background-image: url("imagenes/.png");
+#imagen{background-image: url("imagenes/formacion_continua.png");
     Background-repeat: no-repeat;  
 Background-size: cover;
 }
@@ -259,7 +259,7 @@ position: absolute;
 
   #container {
 
-    height: 100vw;
+    width: 100vw;
 
     -webkit-transform: rotate(90deg);
 
