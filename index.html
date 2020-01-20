@@ -23,7 +23,7 @@
 
     <div id="inicio">
 
-
+      <img id="rotar" src="imagenes/rotar.png" />
       <h1 id="alerta">Bienvenido al manifiesto de la EASD Gran Canaria</h1>
 
       <a id="botonM" onclick="inicio()">Ir al Manifiesto</a>
@@ -108,11 +108,20 @@
           }, 200, function () {
             $('body').fullscreen();
             $("#alerta").text("Esta página solo funciona en horizontal, por favor rote el telefono");
-            $("#botonM").css("opacity", "0");
+            $("#botonM").css("display", "none");
+            $("#rotar").css("display", "block");
           });
           $("#inicio").animate({
             opacity: "1",
           }, 200, function () {
+            window.onorientationchange = function () {
+              if (window.innerHeight > window.innerWidth) {
+                cargador("#contenedor", "#inicio");
+              } else {
+                cargador("#inicio", "#contenedor");
+
+              }
+            };
 
           });
         }
@@ -124,14 +133,6 @@
 
     }
 
-    window.onorientationchange = function () {
-      if(window.innerHeight > window.innerWidth){
-        cargador("#contenedor", "#inicio");
-}else{
-  cargador("#inicio", "#contenedor");
-
-}
-    };
 
 
 
@@ -139,7 +140,7 @@
 
     var cont = 0;
     //var imagenes =['nor.png','disenar.png','idear.png','interiorizar.png','normal.png','idear.png','interiorizar.png',]
-    var imagenes = ['nor.png', 'formacion_continua.png', 'idear-12.png', 'interiorizar-10.png', 'observar-08.png', 'compartir-11.png', 'interiorizar-10.png', 'interiorizar-10.png', 'idear-12.png']
+    var imagenes = ['formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png']
     var titulos = ['Punto 1', 'Punto 2', 'Punto 3', 'Punto 4', 'Punto 5', 'Punto 6', 'Punto 7', 'Punto 8', 'Punto 9']
     var textos = [
       'Fomentar la Investigación, el desarrollo y la Innovación (I+D+I), promoviendo el aprendizaje basado en proyectos reales que puedan llevarse a cabo con recursos y materiales actualizados.',
@@ -152,8 +153,10 @@
       'Potenciar la puesta en práctica de proyectos que atiendan a necesidades sociales, desde una perspectiva creativa e innovadora, que tenga la capacidad de incidir culturalmente en la sociedad a través del trabajo interdisciplinar. Con el fin de situar a  la Escuela de Arte y Superior de Diseño Gran Canaria como un referente institucional dentro del marco de las ciencias sociales y de la comunicación.',
       'Favorecer dinámicas que permitan la reutilización de los material existentes en las diferentes disciplinas, y crear una cultura de la sostenibilidad y la concienciación medioambiental.'
     ];
-    var left = [10, 30, 40, 50, 40, 60, 70, 80, 60];
-    var top = [100, 150, 140, 150, 10, 60, 70, 80, 60];
+    var left1 = [10, 30, 40, 50, 40, 60, 70, 80, 60];
+    var top1 = [100, 150, 140, 150, 10, 60, 70, 80, 60];
+    var left2 = [10, 30, 40, 50, 40, 60, 70, 80, 60];
+    var top2 = [100, 150, 140, 150, 10, 60, 70, 80, 60];
 
 
     var titulo = $("#titP");
@@ -162,10 +165,8 @@
 
 
     function siguiente() {
-
-      if ($(window).width() < 960) {
-      }
-      else {
+        var top= controlador("top");
+        var left= controlador("left");
         if (cont == imagenes.length - 1) {
           cont = 0;
         }
@@ -191,52 +192,19 @@
         });
 
 
-      }
+      
 
     }
 
 
 
 
-    function siguienteM() {
-
-
-      if (cont == imagenes.length - 1) {
-        cont = 0;
-        cambio("2%", "55%");
-
-
-
-      } else {
-        if (controlador(cont)) {
-
-          cambio("45%", "8%");
-
-        } else {
-          cambio("2%", "55%");
-
-        }
-        cont++;
-      }
-
-
-
-
-
-
-
-
-
-    }
-
+  
 
 
     function anterior() {
-      /*if ($(window).width() < 960) {
-
-        anteriorM();
-      }
-      else {*/
+      var top= controlador("top");
+        var left= controlador("left");  
       if (cont == 0) {
         cont = imagenes.length - 1;
       }
@@ -262,7 +230,7 @@
       });
 
     }
-    //}
+   
 
 
 
@@ -272,26 +240,29 @@
 
 
 
-    function anteriorM() {
+    function controlador(req) {
 
-
-      if (cont == 0) {
-        cont = imagenes.length;
-        cambio("45%", "8%");
-
-      } else {
-
-        if (!controlador(cont)) {
-
-          cambio("2%", "55%");
-
-        } else {
-          cambio("45%", "8%");
-        }
-
+      switch(req) {
+      case "top":
+       if ($(window).width() < 960) {
+        return top2;
+      }
+      else{
+        return top1;
+      }
+      break;
+      case "left":
+       if ($(window).width() < 960) {
+        return left2;
+      }
+      else{
+        return left1;
+      }
+      break;
+      default:
+      
       }
 
-      cont--;
     }
 
 
