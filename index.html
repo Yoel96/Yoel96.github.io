@@ -164,7 +164,7 @@
 
     var cont = 0;
     //var imagenes =['nor.png','disenar.png','idear.png','interiorizar.png','normal.png','idear.png','interiorizar.png',]
-    var imagenes = ['formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png', 'formacion_continua.png']
+    var imagenes = ['I+D+i.png', 'formacion_continua.png', 'escucha_activa.png', 'productividad.png', 'busqueda_excelencia.png', 'conocimiento_multidisciplinar.png', 'espacios_experimentales.png', 'proyecto_culturales.png', 'medioambiente.png']
     var titulos = ['Punto 1', 'Punto 2', 'Punto 3', 'Punto 4', 'Punto 5', 'Punto 6', 'Punto 7', 'Punto 8', 'Punto 9']
     var textos = [
       'Fomentar la Investigación, el desarrollo y la Innovación (I+D+I), promoviendo el aprendizaje basado en proyectos reales que puedan llevarse a cabo con recursos y materiales actualizados.',
@@ -177,11 +177,10 @@
       'Potenciar la puesta en práctica de proyectos que atiendan a necesidades sociales, desde una perspectiva creativa e innovadora, que tenga la capacidad de incidir culturalmente en la sociedad a través del trabajo interdisciplinar. Con el fin de situar a  la Escuela de Arte y Superior de Diseño Gran Canaria como un referente institucional dentro del marco de las ciencias sociales y de la comunicación.',
       'Favorecer dinámicas que permitan la reutilización de los material existentes en las diferentes disciplinas, y crear una cultura de la sostenibilidad y la concienciación medioambiental.'
     ];
-    var left1 = [10, 30, 40, 50, 40, 60, 70, 80, 60];
-    var top1 = [100, 150, 140, 150, 10, 60, 70, 80, 60];
-    var left2 = [10, 20, 10, 20, 10, 20, 10, 20, 10];
-    var top2 = [100, 150, 140, 150, 10, 60, 70, 80, 60];
-
+    var left1 = [30, 25, 21, 21, 40, 21, 27, 24, 23];
+    var top1 = [64, 49, 69, 63, 31, 61, 63, 50, 62];
+    var left2 = [30, 25, 21, 21, 40, 21, 27, 23, 23];
+    var top2 = [55, 42, 60, 55, 28, 49, 51, 35, 52];
 
     var titulo = $("#titP");
     var texto = $("#texto");
@@ -204,10 +203,14 @@
           $("#titP").text(titulos[cont])
           $("#textP").text(textos[cont]);;
           //texto.css({"left":left[cont]+"%","top":top[cont]+"%"});
-          texto.offset({ top: top[cont] + "vh" });
+      //    texto.offset({ top: top[cont] + "%" });
           texto.css({
             'left': left[cont] + '%'
           });
+           texto.css({
+            'top': top[cont] + "%"
+          });
+
           $("#imagen,#texto").animate({
             opacity: "1",
           }, 200, function () {
@@ -242,9 +245,12 @@
         $("#titP").text(titulos[cont])
         $("#textP").text(textos[cont]);;
         //texto.css({"left":left[cont]+"%","top":top[cont]+"%"});
-        texto.offset({ top: top[cont] + "vh" });
+      //  texto.offset({ top: top[cont] + "vh" });
         texto.css({
           'left': left[cont] + '%'
+        });
+        texto.css({
+          'top': top[cont] + "%"
         });
         $("#imagen,#texto").animate({
           opacity: "1",
