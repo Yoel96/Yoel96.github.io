@@ -38,6 +38,7 @@ body a {
 }
 
 #inicio {
+    color:white;
     position: absolute;
     display: block;
     width: 60%;
@@ -61,7 +62,7 @@ body a {
     font-size: 300%;
     padding: 1%;
     margin: auto;
-    border: 3px solid grey;
+    border: 3px solid white;
     border-radius: 25px;
     width: 45%;
 }
@@ -129,7 +130,7 @@ h1 {
     position: absolute;
     display: block;
     width: 28%;
-    top: 62%;
+    top: 65%;
     left: 30%;
     text-align: left;
     background: rgba(1000, 1000, 1000, 0.6);
