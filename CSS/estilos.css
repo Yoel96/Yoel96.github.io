@@ -23,7 +23,7 @@ body a {
 }
 
 #imagen {
-    background-image: url("imagenes/I+D+i.png");
+    background-image: url("../imagenes/I+D+i.png");
     Background-repeat: no-repeat;
     Background-size: cover;
 }
